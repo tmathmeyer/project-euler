@@ -42,7 +42,7 @@ now again the chance that there are no duplicated digits is 3211 * (5/10 * .. * 
 or 3211*5!/10^5, which is approximately 4. still good above 1, so i like it. 
 
 
-however at the next step, we get an approximate value of .612!
+however at the next step, we get an approximate value of .612 :'(
 now we can use this as a chance to permute.
 so far, we are pretty certain that there is definitely a prime (actually at least 3 of them) between 7,600,000 and 7,654,321
 that fit our criteria of no duplicate digits
@@ -61,9 +61,9 @@ for each prime p
 for the prime method, check prime.txt or prime.java
 I'm also not going to bother to write out a permuter, because it's late, and I have things to do tomorrow because i actually have a life, what a shock
 
-suffice to say that this has a miniscue runtime, in fact, a permuter should be order of n! which sounds bad, but for this example, 5! is MUCH smaller than 8 millionish (i mean, 120, vs, 8000000... you *should* be able to math if you're reading this)
+suffice to say that this has a miniscule runtime, in fact, a permuter should be order of n! which sounds bad, but for this example, 5! is MUCH smaller than 8 millionish (i mean, 120, vs, 8000000... you *should* be able to math if you're reading this)
 the prime checker uses fermat's little theorum to achieve a runtime of O((log(n))^2) where n is the order of 10s magnitude of the number tested, which is fantastic (and less than O(sqrt(n)).)
 
 since each of these are 7 digits, we can assert that the total runtime will be at WORST 120*(log_2(7))^2, or about 950 operations. holy shit that's fast :D
 
-after testing this, it turns out we were correct, and the answer is: 7652413
+after testing this, it turns out we were correct, and the answer is: 7652413, and it runs in 0ms in C on my netbook
