@@ -1,0 +1,70 @@
+PANDIGITALIS
+
+start by saying 1+2+3+4+5+6+7+8+9 = 45, so anything with all of them is a multiple of 9 and therefore not prime
+well that wont work, and since we need to include the 1, we must leave off the 1
+but wait! that leaves us with a sum of 36. in fact, here's the table:
+
+1+2+3+4+5+6+7+8+9 = 45
+1+2+3+4+5+6+7+8   = 36
+1+2+3+4+5+6+7     = 28
+1+2+3+4+5+6		  = 21
+1+2+3+4+5		  = 15
+1+2+3+4  		  = 10
+1+2+3 			  = 6
+1+2 			  = 3
+1 				  = 1
+
+this looks like the greatest nuber of digits we can have is 7 or 4, but im willing to bet it's 7.
+
+now let's look at the last digit:
+it can be either a 1, 3, or 7
+
+
+since the law of primes says that there about x/ln(x) primes less than or equal to x,
+or approximately 482898 primes less than 7654321.
+now if we subtract from that the approx. number of primes less than or equal to 1000000, we get approx. 410516 primes with 7 digits
+and less than 7654321
+
+now we can approximate the number of primes between 7654321 and 7000000, which ends up being [654321/(7654321-1000000)] * 410516
+or: 40366 primes.
+
+out of these, what are the chances that none of them have duplicate digits? easy, we have 6/10 * 5/10 * .. * 1/10,
+or 6! / 10^6
+
+now how many does that leave? 40366*6! / 10^6 is approximately 29.
+so the chances that there is a prime here is almost certain for us. YAY!
+now we can do the same procedure again, as follows:
+
+# primes between 7600000 and 7654321 is approximately 3211
+
+now again the chance that there are no duplicated digits is 3211 * (5/10 * .. * 1/10)
+or 3211*5!/10^5, which is approximately 4. still good above 1, so i like it. 
+
+
+however at the next step, we get an approximate value of .612!
+now we can use this as a chance to permute.
+so far, we are pretty certain that there is definitely a prime (actually at least 3 of them) between 7,600,000 and 7,654,321
+that fit our criteria of no duplicate digits
+
+this has brought our computation from generating a sieve of the first 987654321 primes, to generating only a sieve up to 
+7654321 (not bad)
+more importantly though, we only start looking for primes between 7612345 and 7654321 now to fit our criteria
+
+so here we can now put some pseudo code: 
+
+int[] primes = permute(5,4,3,2,1);
+for each prime p
+	if isPrime(7600000+p)
+		return p+7600000;
+
+isPrime(int n)
+    int ceiling = (int)sqrt(n);
+    for(int i=1; 6*i <= ceiling; i++){
+        if(n%(6*i-1)==0)
+            return 0;
+         
+        if(n%(6*i+1)==0)
+            return 0;
+    }
+    return 1;
+}
