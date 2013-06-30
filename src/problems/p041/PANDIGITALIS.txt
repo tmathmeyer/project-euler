@@ -1,7 +1,7 @@
 PANDIGITALIS
 
 start by saying 1+2+3+4+5+6+7+8+9 = 45, so anything with all of them is a multiple of 9 and therefore not prime
-well that wont work, and since we need to include the 1, we must leave off the 1
+well that wont work, and since we need to include the 1, we must leave off the 9
 but wait! that leaves us with a sum of 36. in fact, here's the table:
 
 1+2+3+4+5+6+7+8+9 = 45
