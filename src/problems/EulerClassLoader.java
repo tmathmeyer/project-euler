@@ -1,5 +1,7 @@
 package problems;
 
+import problems.lib.java.Stopwatch;
+
 public class EulerClassLoader {
 	public static void main(String[] args){
 
@@ -7,23 +9,27 @@ public class EulerClassLoader {
 	    
 	    System.out.println("please enter a problem number");
 	    String number = new java.util.Scanner(System.in).next();
+	    Stopwatch s = new Stopwatch();
 	    
-	    if ("all".equals(number))
+	    if ("all".equals(number) || "java".equals(number))
 	    {
 	    	for(int i = 0; i < 433; i++){
-	    		load(zero(i));
+	    		load(zero(i), "java".equals(number));
 	    	}
 	    }
 	    else
 	    {
-	    	load(zero(number));
+	    	s.start();
+	    	load(zero(number), false);
+	    	s.stop();
+	    	System.out.println("ran in: "+s.getElapsedTime()+"ms");
 	    }
 	    
 	    
 	    
 	}
 	
-	public static void load(String problem)
+	public static void load(String problem, boolean b)
 	{
 		ClassLoader classLoader = EulerClassLoader.class.getClassLoader();
 		try {
@@ -37,7 +43,7 @@ public class EulerClassLoader {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			System.out.println("this problem is either not solved in java or not solved at all");
+			if (!b)System.out.println("this problem is either not solved in java or not solved at all");
 		}
 	}
 	

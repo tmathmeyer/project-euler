@@ -5,7 +5,7 @@ import problems.lib.java.Sieve;
 
 public class Problem 
 {
-	public Problem()
+	public Problem(int a)
 	{
 		int max = 100000000;
 		long MODULUS = 1000000009;
@@ -21,6 +21,11 @@ public class Problem
 		}
 
 		System.out.println(sum);
+	}
+	
+	public Problem()
+	{
+		System.out.println("this problem is still in progress");
 	}
 
 

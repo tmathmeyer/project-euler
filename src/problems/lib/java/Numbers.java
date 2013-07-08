@@ -63,6 +63,17 @@ public class Numbers {
 		}
 		return result;
 	}
+	
+	public static long exp_mod_itr_slow(long a, long b, long c)
+	{
+		long result = 1;
+		for(int i = 0; i < b; i++)
+		{
+			result *= a;
+			result %= c;
+		}
+		return result;
+	}
 
 
 	/**
