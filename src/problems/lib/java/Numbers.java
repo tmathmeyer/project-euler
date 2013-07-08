@@ -74,6 +74,28 @@ public class Numbers {
 		}
 		return result;
 	}
+	
+	public boolean[] sieve(int top)
+	{
+		boolean[] vals = new boolean[top+1];
+		IL l = new IL(2);
+		for(int i=2; i <= top; i++)
+		{
+			if (!vals[i])
+			{
+				for(int j = i*2; j<=top; j+=i)
+				{
+					vals[j] = true;
+				}
+				if (i != 2)
+				{
+					IL k = new IL(i, l);
+					l = k;
+				}
+			}
+		}
+		return vals;
+	}
 
 
 	/**
