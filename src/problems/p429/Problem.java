@@ -9,7 +9,7 @@ public class Problem
 	{
 		int max = 100000000;
 		long MODULUS = 1000000009;
-		int[] primes = Sieve.largeSieve(max);
+		int[] primes = new int[0]; //Sieve.sieve(max);
 		long sum = 1;
 		
 		System.out.println("starting analysis");
