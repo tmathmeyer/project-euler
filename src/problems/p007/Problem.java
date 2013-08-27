@@ -1,16 +1,24 @@
 package problems.p007;
 
-import problems.lib.java.Numbers;
-
 public class Problem {
 	public Problem()
 	{
-		int i = 0;
-		int c = 1;
-		while(i != 10001){
-			c++;
-			if (Numbers.isPrime(c))i++;
+		int c = 0;
+		boolean[] vals = new boolean[1000000+1];
+		for(int i=2; i <= 1000000; i++)
+		{
+			if (!vals[i])
+			{
+				for(int j = i*2; j<=1000000; j+=i)
+				{
+					vals[j] = true;
+				}
+				c++;
+				if (c == 10001) {
+					System.out.println(i);
+					return;
+				}
+			}
 		}
-		System.out.println(c);
 	}
 }
