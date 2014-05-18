@@ -2,11 +2,18 @@
 #include <string.h>
 #include <math.h>
 
-long long MAX_VALUE = 5000000;
+#define MAX_VALUE 5000000
 
 char primes[MAX_VALUE/5+1];
 char mu[MAX_VALUE/5+1];
 
+typedef struct{
+   long long value1, value2;
+} r_function;
+
+int lower_bound(int a, int b);
+r_function populate_r_function(int p, int q, int m, int s1, int s2);
+long long calc_smart(int val);
 
 
 int main(){
@@ -17,11 +24,11 @@ int main(){
       for (y = x*x; y < MAX_VALUE/5+1; y += x) primes[y] = 0;
    memset(mu, 1, sizeof(mu));
    for (x = 2; x * x < MAX_VALUE/5+1; x++) if (primes[x]) {
-      for (y = x; y < MAX_VALUE/5+; y += x) mu[y] = -mu[y];
+      for (y = x; y < MAX_VALUE/5+1; y += x) mu[y] = -mu[y];
       for (y = x * x; y < MAX_VALUE/5+1; y += x * x) mu[y] = 0;
    }
    for (; x < MAX_VALUE/5+1; x++) if (primes[x])
-      for (y = x; y < MAX_VALUE/5+; y += x) mu[y] = -mu[y];
+      for (y = x; y < MAX_VALUE/5+1; y += x) mu[y] = -mu[y];
    result = (3ll * (MAX_VALUE / 2) - 2) * (MAX_VALUE / 2);
    if (MAX_VALUE % 2)
       result += 3ll * (MAX_VALUE - 1) / 2;
@@ -112,6 +119,4 @@ long long calc_smart(int val){
 
 
 
-typedef struct{
-   long long value1, value2;
-} r_function;
+
