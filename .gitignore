@@ -1,2 +1,5 @@
 *.class
 bin/*
+euler
+*.o
+*.swp

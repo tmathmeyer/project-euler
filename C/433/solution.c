@@ -1,3 +1,5 @@
+#include "../euler.h"
+
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
@@ -16,7 +18,7 @@ r_function populate_r_function(int p, int q, int m, int s1, int s2);
 long long calc_smart(int val);
 
 
-int main(){
+PROVIDES(problem_433) {
    int x, y, d;
    long long result, prev;
    memset(primes, 1, sizeof(primes));
@@ -45,23 +47,12 @@ int main(){
       result += 2 * mu[d] * prev;
    }
    printf("%lld\n", 2 * result + MAX_VALUE * (MAX_VALUE + 1ll) / 2);
-   return 0;
 }
-
-
-
-
-
-
 
 
 int lower_bound(int a, int b){
    return (a >= 0) ? a / b : (a - b + 1) / b;
 }
-
-
-
-
 
 
 r_function populate_r_function(int p, int q, int m, int s1, int s2){

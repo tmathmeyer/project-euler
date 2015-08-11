@@ -1,3 +1,5 @@
+#include "../euler.h"
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -12,7 +14,7 @@ int* filterprimes(int* sieve, int max, int count);
 long long* count_sums(int* primes, int length);
 int iterative_max(int* sieve, long long* sums, int primecount, long long maxprime);
 
-int main() {
+PROVIDES(problem_50) {
 	int length=0, max=1000000;
 	int* sieve = make_sieve(max, &length);
 	int* primes = filterprimes(sieve, max, 4920);

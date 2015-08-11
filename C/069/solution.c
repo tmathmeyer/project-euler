@@ -1,10 +1,8 @@
-#include <iostream>
-#include <vector>
+#include "../euler.h"
 #include <math.h>
-using namespace std;
+#include <stdio.h>
  
-int main()
-{
+PROVIDES(problem_69) {
     double maxium = 1;
     int max = 1;
     int top = 10;
@@ -22,10 +20,11 @@ int main()
     		i++;
     	}
 
-    	if (count / current > maxium)
+    	if (count / current > maxium) {
     		max = current;
+        }
     	current++;
     }
 
-    cout << max << "" << maxium << endl;
+    printf("%i%f\n", max, maxium);
 }
