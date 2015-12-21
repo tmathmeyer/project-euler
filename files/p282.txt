@@ -1,0 +1,10 @@
+thankyou chinese modulus theorum!!!
+
+
+A(0, 0) mod 14^8 = 1
+A(1, 1) mod 14^8 = 3
+A(2, 2) mod 14^8 = 7
+A(3, 3) mod 14^8 = 61
+A(4, 4) mod 14^8 = 915627005
+A(5, 5) mod 14^8 = 829575165
+A(6, 6) mod 14^8 = 829575165

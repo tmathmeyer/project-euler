@@ -3,3 +3,4 @@ bin/*
 euler
 *.o
 *.swp
+/bin/
