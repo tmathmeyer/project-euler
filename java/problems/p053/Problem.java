@@ -1,40 +1,39 @@
 package problems.p053;
 
-public class Problem {
-	public boolean factGMil(int n, int r)
-	{
-		int fact = fact(n, n-r);
-		if (fact == 0)return true;
-		return fact / fact(r, 0) > 1000000;
-	}
-	
-	public int fact(int top, int bot)
-	{
-		long res = 1;
-		while(top > bot && res > 0)
-			res *= top--;
-		return (int) (res>0?res:0);
-	}
-	
+import lib.Real;
+
+public class Problem
+{
+    public static final int THRESHOLD = 1000000;
+    
 	public Problem()
 	{
-		
-		int total = 0;
-		for(int n = 1; n < 23; n++)
+	    int total = 0;
+	    
+		for(int n = 2; n <= 100; n++)
 		{
-			int r = 0;
-			int k = 0;
-			for(; r*2 < n; r++)
-			{
-				if (this.factGMil(n, r))
-					k++;
-			}
-			total+=k*2;
-			if (r*2>=n)
-				total += this.factGMil(n, n/2)?1:0;
+		    for(int r = 0; r < n/2; r++)
+		    {
+		        if (c(n, r).greaterThan(THRESHOLD))
+		        {
+		            total += (n-2*r+1);
+                    r = n;
+		        }
+		    }
 		}
 		System.out.println(total);
-		
-		System.out.println(this.factGMil(23, 9));
+	}
+	
+	private Real c(int n, int r)
+	{
+	    int big = r>r-n?r:r-n;
+	    
+	    Real res = new Real(1);
+	    for(int i=n; i>big;i--)
+	    {
+	        res = res.divide(new Real(i-big));
+	        res = res.multiply(new Real(i));
+	    }
+	    return res;
 	}
 }

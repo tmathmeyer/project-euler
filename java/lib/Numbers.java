@@ -114,27 +114,30 @@ public class Numbers {
 		return (n1*n2)/gcd(n1,n2);
 	}
 	
-	public static boolean isPrime(long n)
-	{//fermats :D
-	  if (n%2==0 || n%3==0)
-		{
-			return false;
-		}
-		boolean res = true;
-		for (long a = 2; a<n; a*=2)
-		{
-			res = res&&exp_mod_itr(a,n,n)==a;
-		}
-		return res;
-	}
+	public static boolean isPrime(long n) {
+        if (n <= 1) return false;
+        if (n == 2) return true;
+        if (n % 2 == 0) return false;
+        if (n < 9) return true;
+        if (n % 3 == 0) return false;
+        
+        long counter = 5;            
+        while ((counter * counter) <= n) {
+            if (n % counter == 0) return false;
+            if (n % (counter + 2) == 0) return false;
+            counter += 6;
+        }
+
+        return true;
+    }
 	
-	public static ArrayList<Integer> listAllPrimeFactors(int i){
-		ArrayList<Integer> res = new ArrayList<Integer>();
+	public static ArrayList<Long> listAllPrimeFactors(long i){
+		ArrayList<Long> res = new ArrayList<>();
 		if (isPrime(i)){
 			res.add(i);
 			return res;
 		}
-		for (int j = 2; j < i/2; j++){
+		for (long j = 2; j < i/2; j++){
 			if (i%j==0){
 				res.add(j);
 				res.addAll(listAllPrimeFactors(i/j));
@@ -144,10 +147,10 @@ public class Numbers {
 		return res;
 	}
 	
-	public static ArrayList<Integer> listPrimeFactors(int i){
-		ArrayList<Integer> result = new ArrayList<Integer>();
-		ArrayList<Integer> all = listAllPrimeFactors(i);
-		for (int j: all)if (!result.contains(j))result.add(j);
+	public static ArrayList<Long> listPrimeFactors(Long i){
+		ArrayList<Long> result = new ArrayList<>();
+		ArrayList<Long> all = listAllPrimeFactors(i);
+		for (Long j: all)if (!result.contains(j))result.add(j);
 		return result;
 	}
 	

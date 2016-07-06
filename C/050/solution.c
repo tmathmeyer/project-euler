@@ -15,7 +15,9 @@ long long* count_sums(int* primes, int length);
 int iterative_max(int* sieve, long long* sums, int primecount, long long maxprime);
 
 PROVIDES(problem_50) {
-	int length=0, max=1000000;
+	printf("segfaulting. incomplete");
+    return;
+    int length=0, max=1000000;
 	int* sieve = make_sieve(max, &length);
 	int* primes = filterprimes(sieve, max, 4920);
 	long long* sums = count_sums(primes, 4920);

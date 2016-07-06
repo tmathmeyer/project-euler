@@ -26,5 +26,6 @@ PROVIDES(problem_69) {
     	current++;
     }
 
-    printf("%i%f\n", max, maxium);
+    printf("incomplete");
+    //printf("%i%f\n", max, maxium);
 }
